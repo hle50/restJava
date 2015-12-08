@@ -10,14 +10,20 @@ import com.mongodb.client.MongoCursor;
 public class SampleService {
 
 	MongoCollection<?> connection=ConnectMongo.getDBConnection();
-	public List<Object> getDocuments(){
-		List<Object> list = new ArrayList();
+	public String getDocuments(){
+		List<String> list = new ArrayList();
 		MongoCursor<?> cursor= connection.find().iterator();
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
 		while(cursor.hasNext()) {
-	        list.add(cursor.next());
+	        builder.append(cursor.next().toString());
+	        if (cursor.hasNext()) {
+	        	builder.append(",");
+			}
 	    }
-
-		return list;
+		builder.append("]");
+		
+		return builder.toString();
 		
 	}
 }

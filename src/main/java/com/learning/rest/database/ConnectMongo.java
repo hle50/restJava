@@ -85,8 +85,8 @@ public class ConnectMongo {
 		while(cursor.hasNext()) {
 	        System.out.println(cursor.next());
 	    }*/
-		SampleService service = new SampleService();
-		System.out.println(service.getDocuments().size());
+		/*SampleService service = new SampleService();
+		System.out.println(service.getDocuments().size());*/
 		
 	}
 	
